@@ -1,0 +1,143 @@
+.container {
+    width: 1200px;
+    height: 100%;
+    padding: 0 5px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    overflow: hidden;
+
+    & ul {
+        display: flex;
+        flex-direction: row;
+    }
+
+    & li {
+        list-style: none;
+        padding: 35px;
+    }
+
+    & a {
+        display: block;
+        text-decoration: none;
+        font-size: 25px;
+        font-family: 'Roboto', sans-serif;
+        color: white;
+    }
+
+    & a:hover {
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+        color: red;
+    }
+}
+
+.heading {
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+
+    & img {
+        width: 735px;
+        height: 735px;
+    }
+}
+
+.nav {
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.burger {
+    cursor: pointer;
+    float: right;
+    padding: 40px 20px;
+
+    &-line {
+        display: block;
+        position: relative;
+        background-color: white;
+        height: 2px;
+        width: 24px;
+    }
+
+    &-line::before,
+    &-line::after {
+        display: block;
+        position: absolute;
+        background-color: white;
+        content: '';
+        height: 100%;
+        width: 100%;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &-line::before {
+        top: 5px;
+    }
+
+    &-line::after {
+        top: -5px;
+    }
+}
+
+.burger-menu {
+    display:none;
+
+    &:checked ~ .nav {
+        max-height: 100%;
+    }
+
+    &:checked ~ .burger .burger-line {
+        background: transparent;
+    }
+
+    &:checked ~ .burger .burger-line::before {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    &:checked ~ .burger .burger-line::after {
+        transform: rotate(45deg);
+        top: 0;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .nav {
+        max-height: none;
+    }
+
+    .burger {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .nav ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .heading {
+        padding-top: 50px;
+        font-size: 24px;
+        letter-spacing: 0.5px;
+    }
+
+    .image img {
+        width: 375px;
+        height: 466px;
+    }
+}
